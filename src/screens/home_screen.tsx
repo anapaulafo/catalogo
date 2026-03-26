@@ -2,9 +2,18 @@ import { ProductCard } from "../components/product_card";
 import { ScrollView, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList, Product } from "../routes/app_routes";
+import { RootStackParamList } from "../types/navigation";
 
-type NavProp = NativeStackNavigationProp<RootStackParamList, "Tabs">;
+interface Product {
+    id: number;
+    name: string;
+    price: number;
+    picture: any;
+    description: string;
+}
+
+type NavProp = NativeStackNavigationProp<RootStackParamList>;
+
 
 export default function HomeScreen() {
     const navigation = useNavigation<NavProp>();
@@ -42,7 +51,7 @@ export default function HomeScreen() {
                         name={product.name}
                         price={product.price}
                         picture={product.picture}
-                        onPress={() => navigation.navigate("Details", { product })}
+                        onPress={() => navigation.navigate("Details", product)}
                     />
                 ))}
             </ScrollView>

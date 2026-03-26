@@ -5,7 +5,7 @@ import { RootStackParamList } from "../types/navigation";
 type Props = NativeStackScreenProps<RootStackParamList, "Details">;
 
 export default function DetailsScreen({ route }: Props) {
-    const { product } = route.params;
+    const product = route.params;
 
     return (
         <View style={styles.container}>
